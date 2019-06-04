@@ -25,6 +25,13 @@ public class Main {
         byte myByteTotal = (byte)(myByteValue/2); /// Java automatically convert expressions into integers so we need to tell the right data type (Type casting)
         System.out.println("My total Byte:" + myByteTotal);
 
+        byte byteVal = 120;
+        short shortVal = 3000;
+        int intVal = 10000;
+        long longVal = 5000L + ((byteVal + shortVal + intVal) * 10L);
+
+        System.out.println("My challenge result: " + longVal);
+
 
 
     }
