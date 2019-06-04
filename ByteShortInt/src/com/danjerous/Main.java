@@ -5,7 +5,10 @@ public class Main {
     public static void main(String[] args) {
 
 
-     
+        // Long has a width of 64
+        long myLongValue = 100L; // The L is to tell that is a long value
+        //  min -2*63, max 2*63
+
 
         // Int has a width of 32
         int minValue = -2_147_483_648; // This is the minimum value that it takes.
