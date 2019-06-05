@@ -9,11 +9,12 @@ public class Main {
 
         System.out.println("Enter your year of Birth");
 
-        boolean hasNextIn = scanner.hasNextInt();
+        boolean hasNextIn = scanner.hasNextInt(); // Asks if the value entered is an int
 
         if(hasNextIn) {
 
             int yearOfBirth = scanner.nextInt(); // it converts the input into a integer
+
             scanner.nextLine(); // handle next line character
 
             System.out.println("Enter your name: ");
@@ -30,7 +31,7 @@ public class Main {
             System.out.println("Unable to parse year of birth.");
         }
 
-        scanner.close();
+        scanner.close(); // If we're not using scanner we need to close it. 
 
     }
 }
