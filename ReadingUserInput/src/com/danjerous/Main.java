@@ -31,7 +31,7 @@ public class Main {
             System.out.println("Unable to parse year of birth.");
         }
 
-        scanner.close(); // If we're not using scanner we need to close it. 
+        scanner.close(); // If we're not using scanner we need to close it.
 
     }
 }
