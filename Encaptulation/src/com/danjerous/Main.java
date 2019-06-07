@@ -35,7 +35,5 @@ public class Main {
 
         System.out.println("Initial health is " + player.getHitPoints());
 
-
-
     }
 }
