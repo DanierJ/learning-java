@@ -1,0 +1,21 @@
+1. Create a base hamburger class.
+2. Set to base hamburger the following items: bread roll type, meat, 4  optional additional additions (lettuce, tomato, carrot, cucumber. Each of these items have got a price), price.
+3. The constructor should only include the roll type, meat and price, can also include name of burger.
+
+4. Create 2 subclasses to cater for:
+ 4.1 Healthy hamburger  (on a brown tye bread roll), plus two addition items that can be added.
+ 4.1.1 The healthy burger can have 6 items (additions) in total.
+
+ hint: You probably want to process the two additional items in this subclass.
+
+ 4.2 Deluxe hamburger: comes with chips and drinks as additions, but no extra additions are allowed.
+
+ hint: You have find a way to automatically add these new additions at the time the deluxe burger object is created, and prevent other additions being made.
+
+ 5. All 3 classes should have a method that can be called anytime to show the base price of the hamburger plus all additional, each showing the addition name, and addition price, and a grand/final total for the burger (base price + all additions)
+
+ For the two additional classes this may require you to be looking at the base class for pricing and then adding totals to final price.
+
+
+
+
