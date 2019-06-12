@@ -25,17 +25,46 @@ public class MobilePhone {
         if(foundPosition < 0) {
             System.out.println("[" + oldContact.getName() + "], was not found.");
             return false;
+        } else if (findContact(newContact.getName()) != -1) {
+            System.out.println("Contact with name [" + newContact.getName() + "] already exists.");
+
+            return false;
         }
 
         this.contactList.set(foundPosition, newContact);
-
-        System.out.println("[" + oldContact.getName() + "], was replaced with " + newContact.getName());
+        System.out.println("[" + oldContact.getName() + "], was replaced with [" + newContact.getName() + "]");
 
         return  true;
     }
 
-    public void removeContact () {
+    public boolean removeContact (Contact contact) {
+        int foundPosition = findContact(contact);
+        if(foundPosition < 0) {
+            System.out.println("[" + contact.getName() + "], was not found.");
+            return false;
+        }
 
+        this.contactList.remove(foundPosition);
+        System.out.println("[" + contact.getName() + "] was deleted from the contact list.");
+
+        return true;
+    }
+
+    public String queryContact (Contact contact) {
+        if(findContact(contact) >= 0) {
+            return contact.getName();
+        }
+        return null;
+    }
+
+    public Contact queryContact (String name) {
+        int position = findContact(name);
+
+        if (position >= 0) {
+            return this.contactList.get(position);
+        }
+
+        return null;
     }
 
 
@@ -56,6 +85,21 @@ public class MobilePhone {
         }
 
         return -1;
+    }
+
+    public void showContacts () {
+
+        if (contactList.size() != 0) {
+            System.out.println("----Contact list-----");
+
+            for (int i = 0; i < contactList.size(); i++ ){
+               // Contact contact = this.contactList.get(i);
+                System.out.println((i + 1) + ". name: " + contactList.get(i).getName() + " | phone: " + contactList.get(i).getPhone());
+            }
+        } else {
+            System.out.println("The contact list is empty.");
+        }
+
     }
 
 }
