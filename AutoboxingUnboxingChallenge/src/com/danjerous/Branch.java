@@ -16,20 +16,19 @@ public class Branch {
     }
 
     public boolean addCustomer (Customer customer) {
-        if(findBranch(customer.getName()) >= 0) {
+        if(findCustomer(customer.getName()) >= 0) {
             System.out.println("Sorry, this customer [" + customer.getName() + "] already exits.");
             return false;
         }
 
         customerList.add(customer);
-        System.out.println("Customer with id[" + customer.getName() + "] added successfully.");
-
+        //System.out.println("Customer [" + customer.getName() + "] added successfully.");
         return true;
     }
 
 
 
-    private int findBranch (String customerName) {
+    private int findCustomer(String customerName) {
 
         for (int i = 0; i < customerList.size(); i++) {
             if(customerList.get(i).getName().equals(customerName))
@@ -49,6 +48,21 @@ public class Branch {
             }
         }
     }
+
+    public boolean registerTransaction (String customerName, double amount) {
+        int position = findCustomer(customerName);
+        if (position >= 0) {
+            customerList.get(position).addTransaction(amount);
+            System.out.println("customer[" + customerName + "]'s transaction with amount of [" + amount + "] successfully registered.");
+            return true;
+        }
+
+        System.out.println("Sorry, that customer isn't register in this branch.");
+        return false;
+
+    }
+
+
 
 
 }

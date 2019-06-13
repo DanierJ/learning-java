@@ -36,17 +36,42 @@ public class Bank {
 
     }
 
-    private int findBranch (Branch branch) {
-        return branchList.indexOf(branch);
-    }
-
     public void showBranch() {
         if (branchList.size() == 0) {
             System.out.println("There are not branches in this bank.");
         } else {
             for (int i = 0; i < branchList.size(); i++) {
-                System.out.println((i+1) + ". branchId [" + branchList.get(i).getIdBranch() + "]");
+                System.out.println((i+1) + ". branchId [" + branchList.get(i).getIdBranch() + "].");
             }
         }
     }
+
+    public boolean registerCustomer (String idBranch, Customer customer) {
+        int position = findBranch(idBranch);
+        if (position >= 0) {
+            if( branchList.get(position).addCustomer(customer)) {
+                System.out.println("Customer successfully registered at branch [" + idBranch + "].");
+                    return true;
+            }
+
+        }
+
+        System.out.println("Sorry, that branch doesn't exists.");
+        return false;
+
+    }
+
+    public boolean registerTransaction (String idBranch, String customerName, double amount) {
+        int position = findBranch(idBranch);
+
+        if (position >= 0 ) {
+            return branchList.get(position).registerTransaction(customerName, amount);
+        }
+
+        System.out.println("Sorry, that branch doesn't exists.");
+        return false;
+    }
+
+
+
 }

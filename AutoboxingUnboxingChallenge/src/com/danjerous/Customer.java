@@ -9,8 +9,7 @@ public class Customer {
     public Customer(String name) {
         this();
         this.name = name;
-        transactionList.add(500.0);
-        System.out.println("Me ejecuté.");
+        transactionList.add(500.0); // Autoboxing
     }
 
     private Customer (){
@@ -21,17 +20,17 @@ public class Customer {
         return name;
     }
 
-    public boolean addTransaction (Double transaction) {
+    public boolean addTransaction (double transaction) {
         transactionList.add(transaction);
         return true;
     }
 
-    public void showTransactions() {
+    public void showTransactions () {
         if (transactionList.size() == 0) {
-            System.out.println("There are not customer in this branch.");
+            System.out.println("There has not been transactions.");
         } else {
             for (int i = 0; i < transactionList.size(); i++) {
-                System.out.println((i+1) + ". customer [" + transactionList.get(i).doubleValue() + "]"); // Unboxing.
+                System.out.println((i+1) + ". Amount [" + transactionList.get(i).doubleValue() + "]"); // Unboxing.
             }
         }
     }
