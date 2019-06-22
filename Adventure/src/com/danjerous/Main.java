@@ -11,34 +11,45 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        Map<String, Integer> tempExit = new HashMap<>();
 
-        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java."));
-        locations.put(1, new Location(1, "You are standing at the end of a road before a small brick building."));
-        locations.put(2, new Location(2, "You are at the top of a hill."));
-        locations.put(3, new Location(3, "You are inside a building, a well house for a small spring."));
-        locations.put(4, new Location(4, "You are in a valley beside a stream."));
-        locations.put(5, new Location(5, "You are in the forest."));
-
-        locations.get(1).addExist("W", 2);
-        locations.get(1).addExist("E", 3);
-        locations.get(1).addExist("S", 4);
-        locations.get(1).addExist("N", 5);
-      //  locations.get(1).addExist("Q", 0);
+        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java.", tempExit));
 
 
-        locations.get(2).addExist("N", 5);
-      //  locations.get(2).addExist("Q", 0);
+        tempExit = new HashMap<>();
 
-        locations.get(3).addExist("W", 1);
-      //  locations.get(3).addExist("Q", 0);
+        tempExit.put("W", 2);
+        tempExit.put("E", 3);
+        tempExit.put("S", 4);
+        tempExit.put("N", 5);
+      //  tempExit.put("Q", 0);
 
-        locations.get(4).addExist("N", 1);
-        locations.get(4).addExist("W", 2);
-        locations.get(4).addExist("Q", 0);
+        locations.put(1, new Location(1, "You are standing at the end of a road before a small brick building.", tempExit));
 
-        locations.get(5).addExist("S", 1);
-        locations.get(5).addExist("W", 2);
-       // locations.get(5).addExist("Q", 0);
+        tempExit = new HashMap<>();
+        tempExit.put("N", 5);
+      //  tempExit.put("Q", 0);
+
+        locations.put(2, new Location(2, "You are at the top of a hill.", tempExit));
+
+        tempExit = new HashMap<>();
+        tempExit.put("W", 1);
+      //  tempExit.put("Q", 0);
+
+        locations.put(3, new Location(3, "You are inside a building, a well house for a small spring.", tempExit));
+
+        tempExit = new HashMap<>();
+        tempExit.put("N", 1);
+        tempExit.put("W", 2);
+        //tempExit.put("Q", 0);
+
+        locations.put(4, new Location(4, "You are in a valley beside a stream.", tempExit));
+        tempExit = new HashMap<>();
+        tempExit.put("S", 1);
+        tempExit.put("W", 2);
+       // tempExit.put("Q", 0);
+
+        locations.put(5, new Location(5, "You are in the forest.", tempExit));
 
         Map<String, String> vocabulary = new HashMap<>();
 
@@ -52,7 +63,7 @@ public class Main {
 
 
 
-        int loc = 1;
+        int loc = 5;
        /* String[] road = "You are standing at the end of a road before a small brick building".split(" ");
 
         for (String r : road) {
@@ -61,18 +72,34 @@ public class Main {
 
         while (true) {
             System.out.println(locations.get(loc).getDescription());
-            if (loc == 0) {
-                break;
-            }
+            System.out.println("\n");
 
-            Map<String, Integer> exits = locations.get(loc).getExits();
-            System.out.print("Available exists are: ");
+           locations.get(5).getExits().remove("S");
+            Map<String, Integer> exits = locations.get(5).getExits();
+
+
+            tempExit.remove("S");
+
+            System.out.print("Available exists of ["+ loc +"] are: ");
 
             for (String exit : exits.keySet()) {
                 System.out.print(exit + ", ");
             }
 
-            System.out.println();
+
+
+            if (loc == 0) {
+                break;
+            }
+
+            exits = locations.get(loc).getExits();
+            System.out.print("Available exists of ["+ loc +"] are: ");
+
+            for (String exit : exits.keySet()) {
+                System.out.print(exit + ", ");
+            }
+
+
 
             String direction = scanner.nextLine().toUpperCase();
 
