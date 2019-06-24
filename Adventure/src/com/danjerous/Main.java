@@ -77,6 +77,8 @@ public class Main {
            locations.get(5).getExits().remove("S");
             Map<String, Integer> exits = locations.get(5).getExits();
 
+            exits.remove("S");
+
 
             tempExit.remove("S");
 
