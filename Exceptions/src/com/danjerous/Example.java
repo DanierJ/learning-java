@@ -8,26 +8,31 @@ public class Example {
     private static Scanner s = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int result = divide();
-        System.out.println(result);
+
+
+        try {
+            int result = divide();
+            System.out.println(result);
+
+        } catch (ArithmeticException | NoSuchElementException e) { //Multiple catching in one catch statement.
+            System.out.println(e.toString());
+            System.out.println("Unable to perform division, autopilot shutting down.");
+        }
     }
 
     private static int divide() {
         int x, y;
-        try {
+       // try {
             x = getInt();
             y = getInt();
-
-        } catch (NoSuchElementException e) {
-            throw new ArithmeticException("No suitable input");
-        }
-        System.out.println("x is " + x + " y is " + y);
-        try {
+            System.out.println("x is " + x + " y is " + y);
             return x / y;
 
-        } catch (ArithmeticException e) {
+        /*} catch (NoSuchElementException e) {
+            throw new NoSuchElementException("No suitable input");
+        } catch (ArithmeticException e ) {
             throw new ArithmeticException("Attempt to divide by 0");
-        }
+        }*/
     }
 
     private static int getInt() {
