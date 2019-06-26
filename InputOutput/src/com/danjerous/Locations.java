@@ -9,41 +9,19 @@ public class Locations implements Map<Integer, Location> {
 
     public static void main(String[] args) throws IOException{
 
-/* FileWriter locFile = null;
-
-        try {
-            locFile = new FileWriter("locations.txt");
+        try(FileWriter locFile = new FileWriter("locations.txt"); FileWriter dirFile = new FileWriter("directions.txt")) {
             for (Location location : locations.values()) {
                 locFile.write(location.getLocationID() + "," + location.getDescription() + "\n");
-               // throw new IOException("Testing exception thrown while writing");
-            }
-
-        }  finally {
-            System.out.println("In finally block");
-
-                if (locFile != null) {
-                    System.out.println("Attempting to  close locfile");
-                    locFile.close();
-                }*/
-            try(FileWriter locFile = new FileWriter("locations.txt");
-            FileWriter dirFile = new FileWriter("directions.txt")) {
-                for (Location location : locations.values()) {
-                    locFile.write(location.getLocationID() + "," + location.getDescription() + "\n");
-                    for (String direction : location.getExits().keySet()) {
-                        dirFile.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
-                    }
+                for (String direction : location.getExits().keySet()) {
+                    dirFile.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
                 }
+            }
         }
-
-
-
     }
 
     static {
-        Scanner scanner = null;
 
-        try {
-            scanner = new Scanner(new FileReader("locations_big.txt"));
+        try(Scanner scanner = new Scanner(new FileReader("locations_big.txt"))) {
             scanner.useDelimiter(",");
             while(scanner.hasNextLine()) {
                 int loc = scanner.nextInt();
@@ -55,27 +33,14 @@ public class Locations implements Map<Integer, Location> {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (scanner != null) {
-                scanner.close();
-            }
         }
 
-        // Now read the exists
 
-        try {
-          scanner = new Scanner(new BufferedReader(new FileReader("directions_big.txt")));
+        try (BufferedReader dirFile = new BufferedReader(new FileReader("directions_big.txt"))) {
 
-          scanner.useDelimiter(",");
+            String input;
+          while ((input = dirFile.readLine()) != null) {
 
-          while (scanner.hasNextLine()) {
-            /*  int loc = scanner.nextInt();
-              scanner.skip(scanner.delimiter());
-              String direction = scanner.next();
-              scanner.skip(scanner.delimiter());
-              String dest = scanner.nextLine();
-              int destination = Integer.parseInt(dest);*/
-            String input = scanner.nextLine();
             String[] data = input.split(",");
             int loc = Integer.parseInt(data[0]);
             String direction = data[1];
@@ -85,14 +50,9 @@ public class Locations implements Map<Integer, Location> {
               Location location = locations.get(loc);
               location.addExit(direction, destination);
           }
-        } catch (IOException e){
+        }catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (scanner != null) {
-                scanner.close();
-            }
         }
-
     }
 
     @Override
