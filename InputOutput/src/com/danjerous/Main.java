@@ -1,5 +1,6 @@
 package com.danjerous;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -8,7 +9,7 @@ public class Main {
 
   private static Locations locations = new Locations();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
 
 
@@ -23,26 +24,22 @@ public class Main {
 
 
 
-
-        int loc = 1;
-       /*String[] road = "You are standing at the end of a road before a small brick building".split(" ");
-
-        for (String r : road) {
-            System.out.println(r);
-        }*/
+        Location currentLocation = locations.getLocation(1);
 
         while (true) {
             System.out.println("-----------------------------------------------------------------------------------------------");
-            System.out.println("\t\t" + locations.get(loc).getDescription());
+            System.out.println("\t\t" + currentLocation.getDescription());
             System.out.println("-----------------------------------------------------------------------------------------------");
 
 
-            Map<String, Integer> exits = locations.get(loc).getExits();
 
-            if (loc == 0) {
+            if (currentLocation.getLocationID() == 0) {
                 break;
             }
-            System.out.print("Available exists of ["+ loc +"] are: ");
+            Map<String, Integer> exits = currentLocation.getExits();
+
+
+            System.out.print("Available exists of are: ");
 
             for (String exit : exits.keySet()) {
                 System.out.print(exit + ", ");
@@ -62,7 +59,7 @@ public class Main {
             }
 
             if(exits.containsKey(direction)) {
-                loc = exits.get(direction);
+                currentLocation = locations.getLocation(currentLocation.getExits().get(direction));
             } else {
                 System.out.println("You cannot go in that direction.");
             }
@@ -77,6 +74,6 @@ public class Main {
                 loc = 1;
             }*/
         }
-
+        locations.close();
     }
 }
