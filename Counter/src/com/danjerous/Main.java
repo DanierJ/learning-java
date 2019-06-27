@@ -3,12 +3,13 @@ package com.danjerous;
 public class Main {
 
     public static void main(String[] args) {
-         Countdown mainCountdown = new Countdown();
+         Countdown countdown = new Countdown();
 
-         CountdownThread t1 = new CountdownThread(mainCountdown);
+
+         CountdownThread t1 = new CountdownThread(countdown);
 
          t1.setName("Thread 1");
-         CountdownThread t2 = new CountdownThread(mainCountdown);
+         CountdownThread t2 = new CountdownThread(countdown);
          t2.setName("Thread 2");
 
          t1.start();
@@ -18,9 +19,11 @@ public class Main {
 }
 
 class Countdown {
-    private int i;
+    private int i; // race condition. Thread interference. When they share same resources.
 
-    public void doCountdown() {
+    // The instances of an object are located on the heap. The local variables on thread stack.
+
+    public void doCountdown() { // By synchronizing the method if a thread is executing it the other threads can't access it till it's done.
         String color;
 
         switch (Thread.currentThread().getName()) {
@@ -34,10 +37,13 @@ class Countdown {
                     color = ThreadColor.ANSI_GREEN;
         }
 
-        for (i = 10; i > 0; i--){
-            System.out.println(color + Thread.currentThread().getName() + ": i = " + i);
+        synchronized (this) {
+            for (i = 10; i > 0; i--){
+                System.out.println(color + Thread.currentThread().getName() + ": i = " + i);
+            }
         }
     }
+
 }
 
 class CountdownThread extends Thread {
