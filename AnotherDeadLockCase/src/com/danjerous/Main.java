@@ -21,7 +21,7 @@ public class Main {
 
             }
         }).start();
-	    
+
     }
 
     static class PolitePerson {
