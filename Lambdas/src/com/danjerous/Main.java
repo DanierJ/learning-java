@@ -40,6 +40,32 @@ public class Main {
         employees.add(ulrich);
         employees.add(hannah);
 
+
+       /* for (Employee employee : employees) {
+            System.out.println(employee.getName());
+            System.out.println(employee.getAge());
+            // new Thread(() -> System.out.println(employee.getAge())).start();
+        }*/
+
+        // Enhancement
+
+        employees.forEach(employee -> {
+            System.out.println(employee.getName());
+            System.out.println(employee.getAge());
+        });
+
+        /*System.out.println("***********************");
+
+        // Employee employee; // can't
+        for (int i = 0; i < employees.size(); i++) {
+            Employee employee = employees.get(i);
+
+            System.out.println(employee.getName());
+            new Thread(() -> System.out.println(employee.getAge())).start();
+
+        }*/
+
+
         /*Collections.sort(employees, new Comparator<Employee>() {
             @Override
             public int compare(Employee employee1, Employee employee2) {
@@ -136,6 +162,9 @@ interface UpperConcat {
 
 class AnotherClass {
     public String doSomething() {
+
+        int i = 0; // must be final or never change.
+
         UpperConcat uc = (s1, s2) -> {
             System.out.println("The lambda expression class's name is " + getClass().getSimpleName());
             String result = s1.toUpperCase() + s2.toUpperCase();
