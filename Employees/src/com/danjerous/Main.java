@@ -2,6 +2,7 @@ package com.danjerous;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 
 public class Main {
@@ -24,6 +25,22 @@ public class Main {
 
         printEmployeesByAge(employees, "Employe over 30", employee -> employee.getAge() > 30);
         printEmployeesByAge(employees, "Employees 30 and under", employee -> employee.getAge() <= 30);
+
+
+        printEmployeesByAge(employees, "Employees younger than 25", new Predicate<Employee>() {
+            @Override
+            public boolean test(Employee employee) {
+                return employee.getAge() < 25;
+            }
+        });
+
+        IntPredicate greaterThan15 = i -> i > 15;
+        IntPredicate lessThan100 = i -> i < 100;
+        System.out.println(greaterThan15.test(10));
+
+        int a = 20;
+        System.out.println(greaterThan15.test(a));
+        System.out.println(greaterThan15.and(lessThan100).test(a));
 
        /* System.out.println("Employees over 30:");
         System.out.println("===============");
@@ -60,6 +77,10 @@ public class Main {
                 System.out.println(employee.getName());
             }
         }
+
+        System.out.println("===============");
+
+
 
        /* employees.forEach(employee -> {
             if (employee.getAge() > 30) {
