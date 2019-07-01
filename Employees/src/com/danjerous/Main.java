@@ -2,8 +2,10 @@ package com.danjerous;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class Main {
 
@@ -41,6 +43,20 @@ public class Main {
         int a = 20;
         System.out.println(greaterThan15.test(a));
         System.out.println(greaterThan15.and(lessThan100).test(a));
+
+
+
+
+        ///// Suppliers
+
+        Random random = new Random();
+        Supplier<Integer> randomSupplier = () -> random.nextInt(1000);
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(randomSupplier.get());
+        }
+
+
 
        /* System.out.println("Employees over 30:");
         System.out.println("===============");
