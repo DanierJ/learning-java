@@ -3,6 +3,7 @@ package com.danjerous;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -14,8 +15,8 @@ public class Main {
         Employee dan = new Employee("Dan Doe", 22);
         Employee ulrich = new Employee("Ulrich Nielsen", 42);
         Employee hannah = new Employee("Hannah Nielsen", 36);
-        Employee charlotte = new Employee("charlotte Nielsen", 45);
-        Employee barltoz = new Employee("Barltoz Nielsen", 18);
+        Employee charlotte = new Employee("Charlotte Doppler", 45);
+        Employee barltoz = new Employee("Barltoz Tiedemann", 18);
 
         List<Employee> employees = new ArrayList<>();
         employees.add(jon);
@@ -56,6 +57,32 @@ public class Main {
             System.out.println(randomSupplier.get());
         }
 
+        // Function
+
+        Function<Employee, String> getLastName = (Employee employee) -> {
+            return employee.getName().substring(employee.getName().indexOf(' ') + 1);
+        };
+
+        String lastName = getLastName.apply(employees.get(1));
+
+        System.out.println(lastName);
+
+        Function<Employee, String> getFirstName = (Employee employee) -> {
+            return employee.getName().substring(0, employee.getName().indexOf(' '));
+        };
+
+        Random random1 = new Random();
+
+        for (Employee employee : employees) {
+            if (random1.nextBoolean()) {
+                System.out.println(getAName(getFirstName, employee));
+            } else {
+                System.out.println(getAName(getLastName, employee));
+            }
+        }
+
+
+
 
 
        /* System.out.println("Employees over 30:");
@@ -81,6 +108,11 @@ public class Main {
                 System.out.println(employee.getName());
             }
         }*/
+    }
+
+
+    private static String getAName ( Function<Employee, String> getName, Employee employee) {
+        return getName.apply(employee);
     }
 
     private static void printEmployeesByAge (List<Employee> employees, String ageText, Predicate<Employee> ageCondition) {
