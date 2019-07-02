@@ -3,6 +3,7 @@ package com.danjerous;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -34,9 +35,21 @@ public class Main {
         someBingoNumbers
                 .stream()
                 .map(String::toUpperCase) // This is the same as s -> s.toUpperCase() it's calling only a method so you can use the method reference
-                .filter(s -> s.startsWith("G"))
+                .filter(s -> s.startsWith("G")) // intermediate operation
                 .sorted()
-                .forEach(System.out::println);
+                .forEach(System.out::println); // Terminal operation.
+
+        Stream<String> ioNumerStream = Stream.of("I26", "I17", "I29", "O71");
+
+        Stream<String> inNumberStream = Stream.of("N40", "N36", "I26", "I17", "I29", "O71");
+
+        Stream<String> concatStream = Stream.concat(ioNumerStream, inNumberStream);
+
+        System.out.println(concatStream
+                .distinct()
+                .peek(System.out::println)
+                .count()
+        );
 
 
 
