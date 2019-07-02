@@ -113,7 +113,7 @@ List<String> sortedGNumbersArrays = someBingoNumbers.stream()
                     return s.startsWith("A");
                 }); // This is lazily evaluated, that means if there's no a terminal operator it won't do a thing.
 
-          
+
 
 
 
