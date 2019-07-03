@@ -27,9 +27,17 @@ public class BankAccountTest {
 
     }
 
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void withdraw_notBranch() throws Exception{
+        double balance = account.withdraw(600.00, false);
+        assertEquals(400.00, balance, 0);
+    }
+
     @org.junit.Test
-    public void withdraw() {
-       fail("This is test has yet to be implemented.");
+    public void withdraw_branch() {
+     //  fail("This is test has yet to be implemented.");
+        double balance = account.withdraw(600.00, true);
+        assertEquals(400.00, balance, 0);
 
     }
 
