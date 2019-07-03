@@ -5,6 +5,13 @@ import static org.junit.Assert.*;
 public class BankAccountTest {
 
     private BankAccount account;
+    private static int count;
+
+    @org.junit.BeforeClass
+    public static void beforeClass() {
+        System.out.println("This executes before any test cases. Count = " + count++);
+    }
+
 
     @org.junit.Before
     public void setup() {
@@ -41,6 +48,16 @@ public class BankAccountTest {
     @org.junit.Test
     public void isChecking_true () {
         assertTrue("The account is NOT a checking account.", account.isChecking());
+    }
+
+    @org.junit.AfterClass
+    public static void afterClass() {
+        System.out.println("This executes after any test cases. Count = " + count++);
+    }
+
+    @org.junit.After
+    public void tearDown() {
+        System.out.println("Count = " + count++);
     }
 
 
