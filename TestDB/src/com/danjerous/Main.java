@@ -15,6 +15,7 @@ public class Main {
 
             // Connection connection = DriverManager.getConnection("jdbc:sqlite:D:\\databases\\testjava.db"); // If it's located in the D disk
             Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Danier Javid\\Desktop\\Courses\\java-masterclass\\TestDB\\testjava.db");
+           // connection.setAutoCommit(false); // The default is autocommit.
 
             // Executing a sql statement, we use statement objects.
             Statement statement = connection.createStatement();
@@ -24,7 +25,18 @@ public class Main {
             statement.execute(sql);
 
             /// Inserting
-            sql = "INSERT INTO contacts (name, phone, email) VALUES ('Danier', 123, 'dan@f.com')";
+            sql = "INSERT INTO contacts (name, phone, email) VALUES ('Joe', 1456, 'joe@f.com')";
+          //  statement.execute(sql);
+
+            sql = "INSERT INTO contacts (name, phone, email) VALUES ('Bartolz', 8745, 'bartolz@f.com')";
+           // statement.execute(sql);
+
+            sql = "INSERT INTO contacts (name, phone, email) VALUES ('Martha', 1456, 'martha@f.com')";
+          //  statement.execute(sql);
+
+            /// Updating
+
+            sql = "UPDATE contacts SET phone = 48741 WHERE name = 'Martha'";
             statement.execute(sql);
 
             statement.close(); // close this first.
