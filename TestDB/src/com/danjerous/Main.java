@@ -37,6 +37,10 @@ public class Main {
             /// Updating
 
             sql = "UPDATE contacts SET phone = 48741 WHERE name = 'Martha'";
+           // statement.execute(sql);
+
+            // Deleting
+            sql = "DELETE FROM contacts WHERE name = 'Joe'";
             statement.execute(sql);
 
             statement.close(); // close this first.
