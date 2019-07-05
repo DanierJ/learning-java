@@ -1,9 +1,6 @@
 package com.danjerous;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Main {
 
@@ -41,7 +38,20 @@ public class Main {
 
             // Deleting
             sql = "DELETE FROM contacts WHERE name = 'Joe'";
+          //  statement.execute(sql);
+
+            // Querying
+
+            sql = "SELECT * FROM contacts";
             statement.execute(sql);
+
+            ResultSet results = statement.getResultSet();
+
+            while (results.next()) {
+                System.out.println("Contact info: " + results.getString("name") + " | " + results.getInt("phone") + " | " + results.getString("email"));
+            }
+
+            results.close();
 
             statement.close(); // close this first.
             connection.close();
