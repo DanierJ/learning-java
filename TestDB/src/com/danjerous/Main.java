@@ -18,7 +18,14 @@ public class Main {
 
             // Executing a sql statement, we use statement objects.
             Statement statement = connection.createStatement();
-            statement.execute("CREATE TABLE contacts (name TEXT, phone INTEGER , email TEXT)");
+
+            String sql = "CREATE TABLE IF NOT EXISTS contacts (name TEXT, phone INTEGER , email TEXT)";
+
+            statement.execute(sql);
+
+            /// Inserting
+            sql = "INSERT INTO contacts (name, phone, email) VALUES ('Danier', 123, 'dan@f.com')";
+            statement.execute(sql);
 
             statement.close(); // close this first.
             connection.close();
