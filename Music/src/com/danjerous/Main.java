@@ -19,9 +19,16 @@ public class Main {
         List<Artist> artists = datasource.queryArtist(Datasource.ORDER_BY_DESC);
 
         if (artists != null) {
-            artists.forEach(artist -> System.out.println("ID: " + artist.getId() + " | name: " + artist.getName()));
+           // artists.forEach(artist -> System.out.println("ID: " + artist.getId() + " | name: " + artist.getName()));
         } else {
             System.out.println("No artists.");
+        }
+
+
+        List<String> albumsForArtist = datasource.queryAlbumsForArtist("Iron Maiden", Datasource.ORDER_BY_DESC);
+
+        if (albumsForArtist != null) {
+            albumsForArtist.forEach(System.out::println);
         }
 
 
