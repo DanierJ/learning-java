@@ -16,7 +16,7 @@ public class Main {
             return;
         }
 
-        List<Artist> artists = datasource.queryArtist();
+        List<Artist> artists = datasource.queryArtist(Datasource.ORDER_BY_DESC);
 
         if (artists != null) {
             artists.forEach(artist -> System.out.println("ID: " + artist.getId() + " | name: " + artist.getName()));
