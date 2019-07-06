@@ -2,6 +2,7 @@ package com.danjerous;
 
 import com.danjerous.model.Artist;
 import com.danjerous.model.Datasource;
+import com.danjerous.model.SongArtist;
 
 import java.beans.Statement;
 import java.util.List;
@@ -25,10 +26,17 @@ public class Main {
         }
 
 
-        List<String> albumsForArtist = datasource.queryAlbumsForArtist("Iron Maiden", Datasource.ORDER_BY_DESC);
+        List<String> albumsForArtist = datasource.queryAlbumsForArtist("Carole King", Datasource.ORDER_BY_ASC);
 
         if (albumsForArtist != null) {
-            albumsForArtist.forEach(System.out::println);
+           // albumsForArtist.forEach(System.out::println);
+        }
+
+
+        List<SongArtist> songArtists = datasource.querySongArtists("Go Your Own Way", Datasource.ORDER_BY_ASC);
+
+        if (songArtists != null) {
+            songArtists.forEach(songArtist -> System.out.println("Artist: " + songArtist.getArtistName() + ", Album: " + songArtist.getAlbumName() + ", Track: " + songArtist.getTrack()));
         }
 
 
