@@ -20,7 +20,7 @@ public class Main {
         List<Artist> artists = datasource.queryArtist(Datasource.ORDER_BY_DESC);
 
         if (artists != null) {
-           // artists.forEach(artist -> System.out.println("ID: " + artist.getId() + " | name: " + artist.getName()));
+            // artists.forEach(artist -> System.out.println("ID: " + artist.getId() + " | name: " + artist.getName()));
         } else {
             System.out.println("No artists.");
         }
@@ -29,7 +29,7 @@ public class Main {
         List<String> albumsForArtist = datasource.queryAlbumsForArtist("Carole King", Datasource.ORDER_BY_ASC);
 
         if (albumsForArtist != null) {
-           // albumsForArtist.forEach(System.out::println);
+            // albumsForArtist.forEach(System.out::println);
         }
 
 
@@ -39,7 +39,11 @@ public class Main {
             songArtists.forEach(songArtist -> System.out.println("Artist: " + songArtist.getArtistName() + ", Album: " + songArtist.getAlbumName() + ", Track: " + songArtist.getTrack()));
         }
 
+        datasource.querySongMetadata();
+
 
         datasource.close();
+
     }
+
 }
