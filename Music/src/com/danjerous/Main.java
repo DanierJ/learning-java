@@ -41,6 +41,12 @@ public class Main {
 
         datasource.querySongMetadata();
 
+        System.out.println("Count: " + datasource.getCount("songs"));
+
+        if (datasource.createViewForSongArtists()) {
+            System.out.println("View created.");
+        }
+
 
         datasource.close();
 
