@@ -43,8 +43,14 @@ public class Main {
 
         System.out.println("Count: " + datasource.getCount("songs"));
 
-        if (datasource.createViewForSongArtists()) {
-            System.out.println("View created.");
+       /* if (datasource.createViewForSongArtists()) {
+           // System.out.println("View created.");
+        }*/
+
+        List<SongArtist> songViewArtists = datasource.querySongInforView("Go Your Own Way");
+
+        if (songViewArtists != null) {
+            songViewArtists.forEach(songArtist -> System.out.println("Artist: " + songArtist.getArtistName() + ", Album: " + songArtist.getAlbumName() + ", Track: " + songArtist.getTrack()));
         }
 
 
