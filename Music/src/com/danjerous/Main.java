@@ -6,6 +6,7 @@ import com.danjerous.model.SongArtist;
 
 import java.beans.Statement;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -47,10 +48,22 @@ public class Main {
            // System.out.println("View created.");
         }*/
 
-        List<SongArtist> songViewArtists = datasource.querySongInforView("Go Your Own Way");
 
-        if (songViewArtists != null) {
-            songViewArtists.forEach(songArtist -> System.out.println("Artist: " + songArtist.getArtistName() + ", Album: " + songArtist.getAlbumName() + ", Track: " + songArtist.getTrack()));
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter a song title: ");
+
+        String title = scanner.nextLine();
+
+
+
+        songArtists = datasource.querySongInforView(title);
+
+        if (songArtists != null) {
+            songArtists.forEach(songArtist -> System.out.println("Artist: " + songArtist.getArtistName() + ", Album: " + songArtist.getAlbumName() + ", Track: " + songArtist.getTrack()));
+        } else {
+            System.out.println("Nothing.");
         }
 
 
