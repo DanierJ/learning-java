@@ -54,17 +54,21 @@ public class Main {
 
         System.out.println("Enter a song title: ");
 
-        String title = scanner.nextLine();
+       // String title = scanner.nextLine();
 
 
 
-        songArtists = datasource.querySongInforView(title);
+        songArtists = datasource.querySongInforView("");
 
         if (songArtists != null) {
             songArtists.forEach(songArtist -> System.out.println("Artist: " + songArtist.getArtistName() + ", Album: " + songArtist.getAlbumName() + ", Track: " + songArtist.getTrack()));
         } else {
             System.out.println("Nothing.");
         }
+
+        // Testing transaction
+
+        datasource.insertSong("Weight", "Hands Like Houses", "Unimagine", 2);
 
 
         datasource.close();
