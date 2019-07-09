@@ -77,6 +77,8 @@ public class Datasource {
     public static final String QUERY_ARTIST = "SELECT " + COLUMN_ARTIST_ID + " FROM " + TABLE_ARTISTS + " WHERE " + COLUMN_ARTIST_NAME + " = ?";
     public static final String QUERY_ALBUM = "SELECT " + COLUMN_ALBUM_ID + " FROM " + TABLE_ALBUMS + " WHERE " + COLUMN_ALBUM_NAME + " = ?";
 
+    public static final String QUERY_ALBUMS_BY_ARTIST_ID  = "SELECT * FROM " + TABLE_ALBUMS + " WHERE " + COLUMN_ALBUM_ARTIST + " = ? ORDER BY " + COLUMN_ALBUM_NAME + " COLLATE NOCASE";
+
 
 
 
@@ -91,6 +93,9 @@ public class Datasource {
 
     private PreparedStatement queryArtist;
     private PreparedStatement queryAlbum;
+
+
+    private PreparedStatement queryAlbumByArtistId;
 
     private static Datasource instance = new Datasource();
 
@@ -120,6 +125,8 @@ public class Datasource {
             queryArtist = conn.prepareStatement(QUERY_ARTIST);
 
             queryAlbum = conn.prepareStatement(QUERY_ALBUM);
+
+            queryAlbumByArtistId = conn.prepareStatement(QUERY_ALBUMS_BY_ARTIST_ID);
 
             return true;
 
@@ -154,6 +161,10 @@ public class Datasource {
 
              if (queryAlbum != null) {
                  queryAlbum.close();
+             }
+
+             if (queryAlbumByArtistId != null) {
+                 queryAlbumByArtistId.close();
              }
 
             if(conn != null) {
@@ -201,6 +212,30 @@ public class Datasource {
             return null;
         }
     }
+
+    public List<Album> queryAlbumForArtistId (int id) {
+        try {
+            queryAlbumByArtistId.setInt(1, id);
+            ResultSet resultSet = queryAlbumByArtistId.executeQuery();
+
+            List<Album> albums = new ArrayList<>();
+            while (resultSet.next()) {
+                Album album = new Album();
+                album.setId(resultSet.getInt(1));
+                album.setName(resultSet.getString(2));
+                album.setId(id);
+                albums.add(album);
+            }
+
+            return albums;
+
+        } catch (SQLException e) {
+            System.out.println("Query Failed: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public List<String> queryAlbumsForArtist (String artistName, int sortOrder) {
         StringBuilder sb = new StringBuilder(QUERY_ALBUMS_BY_ARTIST_START);
