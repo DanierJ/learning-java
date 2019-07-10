@@ -17,8 +17,5 @@
 
     <p>Petición de idioma utilizado: <%= request.getLocale()%></p>
 
-    <%= request.getRequestURL() %>
-    <%= response.getStatus() %>
-
 </body>
 </html>
