@@ -14,7 +14,10 @@
     <h1>Utilizando las classes java independientes</h1>
 
     <p>La suma de de 5 y 7 es: <%=Calculos.metodoSuma(5, 7)%></p>
+
     <p>La resta de de 5 y 7 es: <%=Calculos.metodoResta(5, 7)%></p>
+
+
     <p>La multiplicación de de 5 y 7 es: <%=Calculos.metodoMultiplica(5, 7)%></p>
 </body>
 </html>
