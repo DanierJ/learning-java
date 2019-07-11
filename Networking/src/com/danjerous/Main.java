@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
+import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -49,7 +51,7 @@ public class Main {
         } catch (MalformedURLException e) {
             System.out.println("URL Malformed: " + e.getMessage());
         } */
-
+/*
        try {
            /// HOW TO ACCESS A FUCKING LOCATION ON THE INTERNET.
 
@@ -62,15 +64,33 @@ public class Main {
 
            BufferedReader inputStream = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
+
+           /// Retrieving headers
+
+           Map<String, List<String>> headerFields = urlConnection.getHeaderFields();
+
+           for (Map.Entry<String, List<String>> entry : headerFields.entrySet()) {
+               String key = entry.getKey();
+               List<String> value = entry.getValue();
+               System.out.println("---- key: " + key);
+
+               value.forEach(val -> System.out.println("value: " + val));
+           }*/
+
+
+
+
+
+
             // Reading the output
-           String line = "";
+          /* String line = "";
 
            while (line != null) {
                line = inputStream.readLine();
                System.out.println(line);
            }
 
-           inputStream.close();
+           inputStream.close();*/
 /*
            BufferedReader inputStream = new BufferedReader(new InputStreamReader(url.openStream()));
 
@@ -84,16 +104,52 @@ public class Main {
 
            inputStream.close();*/
 
-
-
-
-       } catch (MalformedURLException e) {
+       /*} catch (MalformedURLException e) {
            System.out.println("URL Malformed: " + e.getMessage());
 
        } catch (IOException e ) {
            System.out.println("IOException: " + e.getMessage());
 
-       }
+       }*/
+
+        try {
+            /// HOW TO ACCESS A FUCKING LOCATION ON THE INTERNET.
+
+            URL url = new URL("http://example.org");
+
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("User-Agent", "Chrome");
+            connection.setReadTimeout(30000);
+
+            int responseCode = connection.getResponseCode();
+            System.out.println("Response code: " + responseCode);
+
+            if (responseCode != 200) {
+                System.out.println("Error reading web page.");
+                return;
+            }
+
+
+            BufferedReader inputReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+            String line;
+
+            while ((line = inputReader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            inputReader.close();
+
+
+        } catch (MalformedURLException e) {
+            System.out.println("URL Malformed: " + e.getMessage());
+
+        } catch (IOException e ) {
+            System.out.println("IOException: " + e.getMessage());
+
+        }
 
     }
 }
