@@ -29,8 +29,6 @@
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyectos_jsp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "user123");   // Así no funciona, toca cargar dinamicamente el driver, en tiempo de ejecucion decimos donde esta el driver con Class.forName();
 
 
-
-
             PreparedStatement insertUsers = conn.prepareStatement("INSERT INTO usuarios (nombre, apellido, usuario, contra, pais, tecnologia) VALUES (?, ?, ?, ?, ?, ?)");
 
 
