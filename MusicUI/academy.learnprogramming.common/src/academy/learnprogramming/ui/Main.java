@@ -1,12 +1,13 @@
-package sample;
+package academy.learnprogramming.ui;
 
+import academy.learnprogramming.db.Datasource;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.model.Datasource;
+
 
 public class Main extends Application {
 
@@ -24,7 +25,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        launch(args);
+        Application.launch(args);
     }
 
     @Override
