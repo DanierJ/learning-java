@@ -115,7 +115,7 @@ public class Main {
         try {
             /// HOW TO ACCESS A FUCKING LOCATION ON THE INTERNET.
 
-            URL url = new URL("http://example.org");
+            URL url = new URL("https://jsonplaceholder.typicode.com/users/1");
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -128,6 +128,7 @@ public class Main {
 
             if (responseCode != 200) {
                 System.out.println("Error reading web page.");
+                System.out.println(connection.getResponseMessage());
                 return;
             }
 
