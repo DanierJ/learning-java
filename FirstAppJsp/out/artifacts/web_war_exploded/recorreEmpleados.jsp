@@ -43,7 +43,7 @@
 
 <html>
 <head>
-    <title>Utilizando el tag c:forEach </title>
+    <title>Utilizando el tag c:forEach, c:if, c:choose c:when c:otherwise </title>
 </head>
 <body>
     <h2>Lista de empleados</h2>
@@ -66,6 +66,21 @@
         <c:if test="${empleado.tecnologia == 'java'}">
             Salario: 5.000.000 <br>
         </c:if>
+
+        <c:choose>
+            <c:when test="${empleado.pais == 'Colombia'}">
+              Saludo:  Cómo va la vaina? <br>
+            </c:when>
+
+            <c:when test="${empleado.pais == 'Mexico'}">
+               Saludo: Alv wey que onda? <br>
+            </c:when>
+
+            <c:otherwise>
+              Saludo:  ¿? <br>
+            </c:otherwise>
+
+        </c:choose>
 
 
     </c:forEach>
