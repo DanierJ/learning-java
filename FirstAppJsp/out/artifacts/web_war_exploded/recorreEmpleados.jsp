@@ -23,9 +23,6 @@
         ResultSet results = queryEmployees.executeQuery();
 
 
-
-
-
         while (results.next()) {
             empleados.add(new Empleado(results.getString(2), results.getString(3),results.getString(6),results.getString(7)));
         }
@@ -59,7 +56,18 @@
 
         Pais: ${empleado.pais} <br>
 
+
         Tecnología: ${empleado.tecnologia} <br>
+
+        <c:if test="${empleado.tecnologia == 'php'}">
+            Salario: 2.000.000 <br>
+        </c:if>
+
+        <c:if test="${empleado.tecnologia == 'java'}">
+            Salario: 5.000.000 <br>
+        </c:if>
+
+
     </c:forEach>
 </body>
 </html>

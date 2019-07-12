@@ -56,7 +56,18 @@
 
         Pais: ${empleado.pais} <br>
 
+
         Tecnología: ${empleado.tecnologia} <br>
+
+        <c:if test="${empleado.tecnologia == 'php'}">
+            Salario: 2.000.000 <br>
+        </c:if>
+
+        <c:if test="${empleado.tecnologia == 'java'}">
+            Salario: 5.000.000 <br>
+        </c:if>
+
+
     </c:forEach>
 </body>
 </html>
