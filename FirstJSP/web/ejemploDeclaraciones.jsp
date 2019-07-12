@@ -25,11 +25,6 @@
     public int metodoMultiplica(int x, int y) {
         return x * y;
     }
-
-
-
-
-
 %>
 
  <p>El resultado de la suma 5 + 7 es: <%=metodoSuma(5, 7) %></p>

@@ -32,9 +32,9 @@
         ResultSet results = queryUser.executeQuery();
 
         if (results.absolute(1)) {
-            out.println("<h2 class='display-4'>Usuario autorizado</h2>");
+            out.println("<h2>Usuario autorizado</h2>");
         } else {
-            out.println("<h2 class='display-4'>Usuario no autorizado</h2>");
+            out.println("<h2>Usuario no autorizado</h2>");
         }
 
 
@@ -44,7 +44,6 @@
 
         conn.close();
 
-        out.println("Registrado con éxito.");
 
     } catch (SQLException e)  {
         out.println("Failed to connect db: " + e.getMessage());
