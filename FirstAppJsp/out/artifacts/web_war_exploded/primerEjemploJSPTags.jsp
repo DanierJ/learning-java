@@ -13,12 +13,12 @@
   pageContext.setAttribute("losAlumnos", alumnos);
 %>
 <html>
-  <head>
-    <title>JSP Tags</title>
-  </head>
-  <body>
-   <c:forEach var="alumno" items="${losAlumnos}">
-     ${alumno} <br>
-   </c:forEach>
-  </body>
+    <head>
+        <title>JSP Tags</title>
+    </head>
+    <body>
+        <c:forEach var="alumno" items="${losAlumnos}">
+            ${alumno} <br>
+        </c:forEach>
+    </body>
 </html>
