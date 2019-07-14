@@ -12,6 +12,18 @@ import java.io.PrintWriter;
 public class RegistroUsuarios extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        /*If we work here first wee need to tell what kind of response we're gonna give:*/
+
+        response.setContentType("text/html");
+
+        PrintWriter output = response.getWriter();
+
+        output.println("<html><body>");
+        output.println("Nombre introducido: " + request.getParameter("nombre") + "<br>");
+        output.println("Apellido introducido: " + request.getParameter("apellido") + "<br>");
+
+        output.println("</body></html>");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
