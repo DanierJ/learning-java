@@ -14,7 +14,7 @@ public class RegistroUsuarios extends HttpServlet {
 
         /*If we work here first wee need to tell what kind of response we're gonna give:*/
 
-        response.setContentType("text/html");
+       /* response.setContentType("text/html");
 
         PrintWriter output = response.getWriter();
 
@@ -22,7 +22,7 @@ public class RegistroUsuarios extends HttpServlet {
         output.println("Nombre introducido: " + request.getParameter("nombre") + "<br>");
         output.println("Apellido introducido: " + request.getParameter("apellido") + "<br>");
 
-        output.println("</body></html>");
+        output.println("</body></html>");*/
 
     }
 
