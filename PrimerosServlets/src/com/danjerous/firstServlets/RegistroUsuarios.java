@@ -1,0 +1,28 @@
+package com.danjerous.firstServlets;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet(name = "RegistroUsuarios", urlPatterns = {"/RegistroUsuarios"})
+public class RegistroUsuarios extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        PrintWriter output = response.getWriter();
+
+        output.println("<html><body>");
+        output.println("Nombre introducido: " + request.getParameter("nombre") + "<br>");
+        output.println("Apellido introducido: " + request.getParameter("apellido") + "<br>");
+
+        output.println("</body></html>");
+
+    }
+}

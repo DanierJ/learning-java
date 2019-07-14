@@ -4,5 +4,15 @@
            xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_4_0.xsd"
            version="4.0">
+    <!--servlet>
+        <servlet-name>RegistroUsuarios</servlet-name>
+        <display-name>RegistroUsuarios</display-name>
+        <description>Registrando usuarios</description>
+        <servlet-class>com.danjerous.firstServlets.RegistroUsuarios</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistroUsuarios</servlet-name>
+        <url-pattern>/RegistroUsuarios</url-pattern>
+    </servlet-mapping>-->
 
 </web-app>
