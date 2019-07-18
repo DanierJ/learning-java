@@ -17,13 +17,10 @@
 
         <c:set var="datosArray" value="${fn:split(datos, ',')}" scope="page"/>
 
-
-
         <input type="text" value="${datosArray[0]}"><br>
         <input type="text" value="${datosArray[1]}"><br>
         <input type="text" value="${datosArray[2]}"><br>
         <input type="text" value="${datosArray[3]}">
-
 
     </body>
 </html>

@@ -1,6 +1,8 @@
 package com.danjerous.productos;
 
-import javax.annotation.Resource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +18,7 @@ public class ControladorProductos extends HttpServlet {
 
     private ModeloProductos modeloProductos;
 
-    @Resource(name="jdbc/Productos")
+   // @Resource(name="jdbc/Productos")
     private DataSource miPool;
 
     @Override
@@ -25,7 +27,11 @@ public class ControladorProductos extends HttpServlet {
 
         try {
 
-         modeloProductos = new ModeloProductos(miPool);
+            Context context = new InitialContext();
+            miPool = (DataSource)context.lookup("java:comp/env/jdbc/Productos");
+
+            modeloProductos = new ModeloProductos(miPool);
+
         } catch (Exception e) {
             throw new ServletException(e);
         }
@@ -44,9 +50,11 @@ public class ControladorProductos extends HttpServlet {
             List<Productos> productos = modeloProductos.getProductos();
 
 
-            request.setAttribute("listaProductos", productos);
+            request.setAttribute("productos", productos);
 
-            request.getRequestDispatcher("/listaProductos.jsp").forward(request,response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaProductos.jsp");
+
+            dispatcher.forward(request, response);
 
         } catch (SQLException e) {
             System.out.println("Hubo un error obteniendo los productos: " + e.getMessage());

@@ -12,6 +12,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
+
         List<Empleado> empleados = new ArrayList<>();
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");

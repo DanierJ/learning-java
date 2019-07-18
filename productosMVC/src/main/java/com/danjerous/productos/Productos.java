@@ -1,17 +1,15 @@
 package com.danjerous.productos;
 
-import java.util.Date;
-
 public class Productos {
     private String cArt;
     private String nombre;
     private String seccion;
-    private double precio;
-    private Date fecha;
+    private String precio;
+    private String fecha;
     private String importado;
     private String pais;
 
-    public Productos(String cArt, String nombre, String seccion, double precio, Date fecha, String importado, String pais) {
+    public Productos(String cArt, String nombre, String seccion, String precio, String fecha, String importado, String pais) {
         this.cArt = cArt;
         this.nombre = nombre;
         this.seccion = seccion;
@@ -21,7 +19,7 @@ public class Productos {
         this.pais = pais;
     }
 
-    public Productos(String nombre, String seccion, double precio, Date fecha, String importado, String pais) {
+    public Productos(String nombre, String seccion, String precio, String fecha, String importado, String pais) {
         this.nombre = nombre;
         this.seccion = seccion;
         this.precio = precio;
@@ -54,19 +52,19 @@ public class Productos {
         this.seccion = seccion;
     }
 
-    public double getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

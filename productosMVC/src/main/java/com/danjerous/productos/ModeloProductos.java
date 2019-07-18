@@ -34,7 +34,7 @@ public class ModeloProductos {
         resultSet = statement.executeQuery(sql);
 
         while (resultSet.next()) {
-            Productos producto = new Productos(resultSet.getString("cod_articulo"),resultSet.getString("seccion"),resultSet.getDouble("precio"),resultSet.getDate("fecha"),resultSet.getString("importado"),resultSet.getString("pais"));
+            Productos producto = new Productos(resultSet.getString("cod_articulo"), resultSet.getString("nombre"),resultSet.getString("seccion"),resultSet.getString("precio"),resultSet.getString("fecha"),resultSet.getString("importado"),resultSet.getString("pais"));
 
             productos.add(producto);
 

@@ -1,6 +1,6 @@
 <!DOCTYPE web-app PUBLIC
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+ "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
@@ -11,6 +11,14 @@
     <servlet-mapping>
         <servlet-name>ServletProductos</servlet-name>
         <url-pattern>/ServletProductos</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorProductos</servlet-name>
+        <servlet-class>com.danjerous.productos.ControladorProductos</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorProductos</servlet-name>
+        <url-pattern>/ControladorProductos</url-pattern>
     </servlet-mapping>
     <resource-ref>
         <description>DB Connection</description>
