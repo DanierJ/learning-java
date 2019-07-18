@@ -1,3 +1,0 @@
-<Context>
-    <Resource name="jdbc/Productos" auth="Container" type="javax.sql.DataSource" maxActive="15" maxIdle="3" maxWait="5000" username="root" password="user123" driverClassName="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost:3306/pruebas?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"></Resource>
-</Context>
