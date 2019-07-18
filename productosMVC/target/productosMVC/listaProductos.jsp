@@ -12,8 +12,7 @@
 
 
 <%
-    List<Productos> productos = (List<Productos>) request.getAttribute("productos");
-   pageContext.setAttribute("productos", productos);
+
 %>
 
 <!doctype html>
@@ -30,33 +29,37 @@
 </head>
 <body>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>cod_art</th>
-        <th>nombre</th>
-        <th>seccion</th>
-        <th>precio</th>
-        <th>fecha</th>
-        <th>importado</th>
-        <th>pais</th>
-    </tr>
-
-    <c:forEach var="producto" items="${productos}">
+<div class="container">
+    <h2 class="display-2">Lista de productos</h2>
+    <table class="table">
+        <thead>
         <tr>
-            <td> ${producto.cArt} </td>
-            <td> ${producto.nombre} </td>
-            <td> ${producto.seccion} </td>
-            <td> ${producto.precio} </td>
-            <td> ${producto.fecha}</td>
-            <td> ${producto.importado} </td>
-            <td> ${producto.pais} </td>
+            <th>cod_art</th>
+            <th>nombre</th>
+            <th>seccion</th>
+            <th>precio</th>
+            <th>fecha</th>
+            <th>importado</th>
+            <th>pais</th>
         </tr>
-    </c:forEach>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+
+        <c:forEach var="producto" items="${productos}">
+            <tr>
+                <td> ${producto.cArt} </td>
+                <td> ${producto.nombre} </td>
+                <td> ${producto.seccion} </td>
+                <td> ${producto.precio} </td>
+                <td> ${producto.fecha}</td>
+                <td> ${producto.importado} </td>
+                <td> ${producto.pais} </td>
+            </tr>
+        </c:forEach>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
 
 
 <!-- Optional JavaScript -->
