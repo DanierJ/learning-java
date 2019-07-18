@@ -85,4 +85,17 @@ public class Productos {
     public void setPais(String pais) {
         this.pais = pais;
     }
+
+    @Override
+    public String toString() {
+        return "Productos {" +
+                "cArt='" + cArt + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", seccion='" + seccion + '\'' +
+                ", precio=" + precio +
+                ", fecha=" + fecha +
+                ", importado='" + importado + '\'' +
+                ", pais='" + pais + '\'' +
+                '}';
+    }
 }
