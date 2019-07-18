@@ -1,4 +1,4 @@
-<Context>
+<Context path="/productosMVC">
     <Resource
             name="jdbc/Productos"
             auth="Container"

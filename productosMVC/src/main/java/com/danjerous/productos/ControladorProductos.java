@@ -1,7 +1,6 @@
 package com.danjerous.productos;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
+import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +17,7 @@ public class ControladorProductos extends HttpServlet {
 
     private ModeloProductos modeloProductos;
 
-   // @Resource(name="jdbc/Productos")
+    @Resource(name="jdbc/Productos")
     private DataSource miPool;
 
     @Override
@@ -26,10 +25,6 @@ public class ControladorProductos extends HttpServlet {
         super.init();
 
         try {
-
-            Context context = new InitialContext();
-            miPool = (DataSource)context.lookup("java:comp/env/jdbc/Productos");
-
             modeloProductos = new ModeloProductos(miPool);
 
         } catch (Exception e) {

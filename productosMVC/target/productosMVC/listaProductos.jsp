@@ -1,5 +1,5 @@
 
-<%@taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.danjerous.productos.Productos" %><%--
   Created by IntelliJ IDEA.
@@ -13,7 +13,7 @@
 
 <%
     List<Productos> productos = (List<Productos>) request.getAttribute("productos");
-    pageContext.setAttribute("productos", productos);
+   pageContext.setAttribute("productos", productos);
 %>
 
 <!doctype html>
@@ -44,14 +44,13 @@
 
     <c:forEach var="producto" items="${productos}">
         <tr>
-            <td> <c:out value="${producto.cArt}"/> </td>
-            <td> <c:out value="${producto.nombre}"/> </td>
-            <td> <c:out value="${producto.seccion}"/> </td>
-            <td> <c:out value="${producto.precio}"/> </td>
-            <td> <c:out value="${producto.fecha}"/> </td>
-            <td> <c:out value="${producto.importado}"/> </td>
-            <td> <c:out value="${producto.pais}"/> </td>
-
+            <td> ${producto.cArt} </td>
+            <td> ${producto.nombre} </td>
+            <td> ${producto.seccion} </td>
+            <td> ${producto.precio} </td>
+            <td> ${producto.fecha}</td>
+            <td> ${producto.importado} </td>
+            <td> ${producto.pais} </td>
         </tr>
     </c:forEach>
     </thead>
