@@ -40,9 +40,9 @@ public class ModeloProductos {
 
         }
 
-        resultSet.close();
-        statement.close();
-        connection.close();
+        //resultSet.close();
+        //statement.close();
+        //connection.close();
         return productos;
     }
 
