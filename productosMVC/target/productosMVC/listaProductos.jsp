@@ -31,31 +31,36 @@
 
 <div class="container">
     <h2 class="display-2">Lista de productos</h2>
-    <table class="table">
+
+    <a href="formularioInsertar.jsp" class="btn btn-primary">Insertar registro</a>
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>cod_art</th>
             <th>nombre</th>
-            <th>seccion</th>
+            <th>sección</th>
             <th>precio</th>
             <th>fecha</th>
             <th>importado</th>
-            <th>pais</th>
+            <th>país</th>
+            <th>editar</th>
+            <th>eliminar</th>
         </tr>
-
-        <c:forEach var="producto" items="${productos}">
-            <tr>
-                <td> ${producto.cArt} </td>
-                <td> ${producto.nombre} </td>
-                <td> ${producto.seccion} </td>
-                <td> ${producto.precio} </td>
-                <td> ${producto.fecha}</td>
-                <td> ${producto.importado} </td>
-                <td> ${producto.pais} </td>
-            </tr>
-        </c:forEach>
         </thead>
         <tbody>
+            <c:forEach var="producto" items="${productos}">
+                <tr>
+                    <td> ${producto.cArt} </td>
+                    <td> ${producto.nombre} </td>
+                    <td> ${producto.seccion} </td>
+                    <td> ${producto.precio} </td>
+                    <td> ${producto.fecha}</td>
+                    <td> ${producto.importado} </td>
+                    <td> ${producto.pais} </td>
+                    <td><a href="#" class="btn btn-info">Editar</a></td>
+                    <td><a href="#" class="btn btn-danger">Eliminar</a></td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </div>
