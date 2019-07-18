@@ -1,4 +1,4 @@
-package com.danjerous;
+package com.danjerous.productos;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>ServletProductos</servlet-name>
-        <servlet-class>com.danjerous.ServletProductos</servlet-class>
+        <servlet-class>com.danjerous.productos.ServletProductos</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletProductos</servlet-name>

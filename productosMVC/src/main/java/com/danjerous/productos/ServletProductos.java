@@ -1,4 +1,4 @@
-package com.danjerous;
+package com.danjerous.productos;
 
 import javax.annotation.Resource;
 import javax.naming.Context;
