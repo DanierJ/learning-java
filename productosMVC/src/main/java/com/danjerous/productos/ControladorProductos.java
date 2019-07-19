@@ -39,7 +39,61 @@ public class ControladorProductos extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // Obtener la lista de productos desde el modelo
+        // Leer parámetro del formulario
+        String instruccion  = request.getParameter("instruccion");
+        // Si no se envía el parámetro, listar productos
+
+        if (instruccion == null) {
+            instruccion  =  "listar";
+        }
+
+
+        switch (instruccion) {
+            case "listar":
+                obtenerProductos(request, response);
+                break;
+            case "insertar":
+                agregarProductos(request, response);
+                break;
+                default:
+                    obtenerProductos(request, response);
+        }
+
+        // Redirigir el flujo de ejecución al método adecuado
+
+    }
+
+    private void agregarProductos(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        // leer la información del producto que viene del formulario
+
+       // Map<String, String[]> params = request.getParameterMap();
+
+        String codArticulo = request.getParameter("codArt");
+        String nombre = request.getParameter("nombre");
+        String seccion = request.getParameter("seccion");
+        String precio = request.getParameter("precio");
+        String fecha = request.getParameter("fecha");
+        String pais = request.getParameter("pais");
+        String importado = request.getParameter("importado");
+
+
+        // Crear un objeto de tipo producto
+
+        Productos producto = new Productos(codArticulo, nombre,seccion, precio,fecha, pais, importado);
+
+        // Enviar el objeto al modelo y después insertar el objeto Producto en la BBDD
+        try {
+            modeloProductos.insertarProductos(producto);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        // Volver al listado de Productos
+        obtenerProductos(request, response);
+    }
+
+    private void obtenerProductos(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 
         try {
             List<Productos> productos = modeloProductos.getProductos();
@@ -55,8 +109,6 @@ public class ControladorProductos extends HttpServlet {
             System.out.println("Hubo un error obteniendo los productos: " + e.getMessage());
             e.printStackTrace();
         }
-
-
 
 
     }

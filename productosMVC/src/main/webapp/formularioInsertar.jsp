@@ -23,33 +23,36 @@
 
     <div class="container">
         <h2 class="display-2">Insertar Articulo</h2>
-        <form method="post" action="/ControladorInsertar">
+        <a href="ControladorProductos" class="btn btn-info">Go back</a>
+        <form method="GET" action="ControladorProductos">
+            <input type="hidden" name="instruccion" value="insertar">
             <div class="form-group">
                 <label for="codArticulo">Cod Articulo</label>
-                <input type="text" class="form-control" id="CodArticulo" placeholder="Cod Articulo">
+                <input type="text" name="codArt" class="form-control" id="CodArticulo" placeholder="Cod Articulo">
             </div>
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre">
             </div>
             <div class="form-group">
                 <label for="seccion">Seccion</label>
-                <input type="text" class="form-control" id="seccion" placeholder="Seccion">
-
+                <input type="text" name="seccion" class="form-control" id="seccion" placeholder="Seccion">
             </div>
             <div class="form-group">
                 <label for="precio">Precio</label>
-                <input type="text" class="form-control" id="precio" placeholder="Precio">
-
-            </div><div class="form-group">
+                <input type="text" name="precio" class="form-control" id="precio" placeholder="Precio">
+            </div>
+            <div class="form-group">
+                <label for="precio">Fecha</label>
+                <input type="text" name="fecha" class="form-control" id="fecha" placeholder="Fecha">
+            </div>
+            <div class="form-group">
                 <label for="pais">Pais</label>
-                <input type="text" class="form-control" id="pais" placeholder="Pais">
-
+                <input type="text" name="pais" class="form-control" id="pais" placeholder="Pais">
             </div>
             <div class="form-group">
                 <label for="importado">Importado</label>
-                <input type="text" class="form-control" id="importado" placeholder="Importado">
-
+                <input type="text" name="importado" class="form-control" id="importado" placeholder="Importado">
             </div>
             <button type="submit" class="btn btn-primary">Insertar</button>
         </form>

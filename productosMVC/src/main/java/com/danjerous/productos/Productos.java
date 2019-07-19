@@ -6,26 +6,26 @@ public class Productos {
     private String seccion;
     private String precio;
     private String fecha;
-    private String importado;
     private String pais;
+    private String importado;
 
-    public Productos(String cArt, String nombre, String seccion, String precio, String fecha, String importado, String pais) {
+    public Productos(String cArt, String nombre, String seccion, String precio, String fecha, String pais, String importado) {
         this.cArt = cArt;
         this.nombre = nombre;
         this.seccion = seccion;
         this.precio = precio;
         this.fecha = fecha;
-        this.importado = importado;
         this.pais = pais;
+        this.importado = importado;
     }
 
-    public Productos(String nombre, String seccion, String precio, String fecha, String importado, String pais) {
+    public Productos(String nombre, String seccion, String precio, String fecha, String pais, String importado) {
         this.nombre = nombre;
         this.seccion = seccion;
         this.precio = precio;
         this.fecha = fecha;
-        this.importado = importado;
         this.pais = pais;
+        this.importado = importado;
     }
 
     public String getcArt() {
