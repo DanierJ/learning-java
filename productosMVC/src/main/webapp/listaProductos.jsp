@@ -33,6 +33,7 @@
     <h2 class="display-2">Lista de productos</h2>
 
     <a href="formularioInsertar.jsp" class="btn btn-primary">Insertar registro</a>
+    <br> <br>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -57,7 +58,7 @@
                     <td> ${producto.fecha}</td>
                     <td> ${producto.importado} </td>
                     <td> ${producto.pais} </td>
-                    <td><a href="#" class="btn btn-info">Editar</a></td>
+                    <td><a href="ControladorProductos?instruccion=cargar&cArticulo=${producto.cArt}" class="btn btn-info">Editar</a></td>
                     <td><a href="#" class="btn btn-danger">Eliminar</a></td>
                 </tr>
             </c:forEach>

@@ -55,12 +55,43 @@ public class ControladorProductos extends HttpServlet {
             case "insertar":
                 agregarProductos(request, response);
                 break;
+            case "cargar":
+                obtenerProductoPorCodigo(request,response);
+            case "actualizar":
+                actualizarProducto(request, response);
+                break;
                 default:
                     obtenerProductos(request, response);
         }
 
         // Redirigir el flujo de ejecución al método adecuado
 
+    }
+
+    private void actualizarProducto(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String codArticulo = request.getParameter("codArt");
+        String nombre = request.getParameter("nombre");
+        String seccion = request.getParameter("seccion");
+        String precio = request.getParameter("precio");
+        String fecha = request.getParameter("fecha");
+        String pais = request.getParameter("pais");
+        String importado = request.getParameter("importado");
+
+
+        // Crear un objeto de tipo producto
+
+        Productos producto = new Productos(codArticulo, nombre,seccion, precio,fecha, pais, importado);
+
+        // Enviar el objeto al modelo y después insertar el objeto Producto en la BBDD
+        try {
+            modeloProductos.actualizarProducto(producto);
+
+            // Volver al listado de Productos
+            obtenerProductos(request, response);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void agregarProductos(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -84,13 +115,13 @@ public class ControladorProductos extends HttpServlet {
         // Enviar el objeto al modelo y después insertar el objeto Producto en la BBDD
         try {
             modeloProductos.insertarProductos(producto);
+
+            // Volver al listado de Productos
+            obtenerProductos(request, response);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-        // Volver al listado de Productos
-        obtenerProductos(request, response);
     }
 
     private void obtenerProductos(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
@@ -111,5 +142,24 @@ public class ControladorProductos extends HttpServlet {
         }
 
 
+    }
+
+    private void obtenerProductoPorCodigo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Leer el código artículo
+        String codArticulo = request.getParameter("cArticulo");
+
+        Productos producto;
+        try {
+            producto = modeloProductos.getProductoPorCodigo(codArticulo);
+
+            request.setAttribute("producto", producto);
+
+
+            request.getRequestDispatcher("/formularioActualizar.jsp").forward(request, response);
+
+        } catch (SQLException e) {
+            System.out.println("Error al obtener el producto: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

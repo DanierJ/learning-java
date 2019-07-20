@@ -36,7 +36,7 @@ public class ModeloProductos {
             productos.add(producto);
 
         }
-
+        /// CERRAR CONEXIONES
         //resultSet.close();
         //statement.close();
         //connection.close();
@@ -71,6 +71,71 @@ public class ModeloProductos {
         }
 
         return false;
+
+    }
+
+
+    public Productos getProductoPorCodigo (String codArticulo) throws SQLException{
+        Connection connection = null;
+        PreparedStatement queryProducto = null;
+        ResultSet resultSet = null;
+
+        connection = origenDatos.getConnection();
+
+        queryProducto = connection.prepareStatement("SELECT * FROM productos WHERE cod_articulo = ?");
+
+
+        queryProducto.setString(1, codArticulo);
+
+        resultSet = queryProducto.executeQuery();
+
+        Productos producto = null;
+
+        if (resultSet.next()) {
+            producto = new Productos(codArticulo, resultSet.getString("nombre"),resultSet.getString("seccion"),resultSet.getString("precio"),resultSet.getString("fecha"),resultSet.getString("pais"),resultSet.getString("importado"));
+        } else {
+            throw new SQLException("No se pudo encontrar el producto con ese codigo");
+        }
+
+        return producto;
+
+
+        /// CERRAR CONEXIONES
+    }
+
+    public boolean actualizarProducto(Productos producto) throws SQLException {
+        Connection connection = null;
+        PreparedStatement updateProducto = null;
+
+
+        connection = origenDatos.getConnection();
+
+
+        String sql = "UPDATE productos SET nombre = ? , seccion = ?, precio = ?, fecha = ?, pais = ?, importado = ? WHERE cod_articulo = ?";
+
+        updateProducto = connection.prepareStatement(sql);
+
+        System.out.println(sql);
+
+        updateProducto.setString(1, producto.getNombre());
+        updateProducto.setString(2, producto.getSeccion());
+        updateProducto.setString(3, producto.getPrecio());
+        updateProducto.setString(4, producto.getFecha());
+        updateProducto.setString(5, producto.getPais());
+        updateProducto.setString(6, producto.getImportado());
+        updateProducto.setString(7, producto.getcArt());
+
+
+        int actualizado = updateProducto.executeUpdate();
+
+        if (actualizado > 0) {
+            return true;
+        }
+
+        return false;
+
+        /// CERRAR CONEXIONES
+
 
     }
 
