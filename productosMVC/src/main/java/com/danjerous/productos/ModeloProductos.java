@@ -37,9 +37,9 @@ public class ModeloProductos {
 
         }
         /// CERRAR CONEXIONES
-        //resultSet.close();
-        //statement.close();
-        //connection.close();
+        resultSet.close();
+        statement.close();
+        connection.close();
         return productos;
     }
 
@@ -65,9 +65,13 @@ public class ModeloProductos {
 
         int success = insertarProducto.executeUpdate();
 
+        resultSet.close();
+        statement.close();
+        connection.close();
 
         if (success > 0) {
             return true;
+
         }
 
         return false;
@@ -96,6 +100,10 @@ public class ModeloProductos {
         } else {
             throw new SQLException("No se pudo encontrar el producto con ese codigo");
         }
+
+        resultSet.close();
+        queryProducto.close();
+        connection.close();
 
         return producto;
 
@@ -126,6 +134,10 @@ public class ModeloProductos {
 
         int actualizado = updateProducto.executeUpdate();
 
+        updateProducto.close();
+        connection.close();
+
+
         if (actualizado > 0) {
             return true;
         }
@@ -148,6 +160,9 @@ public class ModeloProductos {
         deleteProducto.setString(1,codArticulo);
 
         int eliminado = deleteProducto.executeUpdate();
+
+        deleteProducto.close();
+        connection.close();
 
         if (eliminado > 0) {
             return true;
