@@ -1,5 +1,10 @@
 package com.danjerous.productos;
 
+/**
+ * Esta clase es para construir los objetos de tipo Producto
+ * @author Danier Javid Martínez Camacho
+ *
+ */
 public class Productos {
     private String cArt;
     private String nombre;
@@ -9,6 +14,16 @@ public class Productos {
     private String pais;
     private String importado;
 
+    /**
+     *
+     * @param cArt: Código del artículo
+     * @param nombre: Nombre del producto
+     * @param seccion
+     * @param precio
+     * @param fecha
+     * @param pais
+     * @param importado
+     */
     public Productos(String cArt, String nombre, String seccion, String precio, String fecha, String pais, String importado) {
         this.cArt = cArt;
         this.nombre = nombre;
