@@ -59,7 +59,7 @@
                     <td> ${producto.importado} </td>
                     <td> ${producto.pais} </td>
                     <td><a href="ControladorProductos?instruccion=cargar&cArticulo=${producto.cArt}" class="btn btn-info">Editar</a></td>
-                    <td><a href="#" class="btn btn-danger">Eliminar</a></td>
+                    <td><a href="ControladorProductos?instruccion=eliminar&cArticulo=${producto.cArt}" class="btn btn-danger">Eliminar</a></td>
                 </tr>
             </c:forEach>
         </tbody>

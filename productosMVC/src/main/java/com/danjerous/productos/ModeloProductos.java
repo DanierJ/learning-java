@@ -115,8 +115,6 @@ public class ModeloProductos {
 
         updateProducto = connection.prepareStatement(sql);
 
-        System.out.println(sql);
-
         updateProducto.setString(1, producto.getNombre());
         updateProducto.setString(2, producto.getSeccion());
         updateProducto.setString(3, producto.getPrecio());
@@ -137,6 +135,25 @@ public class ModeloProductos {
         /// CERRAR CONEXIONES
 
 
+    }
+
+    public boolean eliminarProducto(String codArticulo) throws SQLException {
+        Connection connection = null;
+        PreparedStatement deleteProducto = null;
+
+        connection = origenDatos.getConnection();
+
+        deleteProducto = connection.prepareStatement("DELETE FROM productos WHERE cod_articulo = ?");
+
+        deleteProducto.setString(1,codArticulo);
+
+        int eliminado = deleteProducto.executeUpdate();
+
+        if (eliminado > 0) {
+            return true;
+        }
+
+        return false;
     }
 
 

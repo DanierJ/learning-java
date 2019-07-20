@@ -57,14 +57,32 @@ public class ControladorProductos extends HttpServlet {
                 break;
             case "cargar":
                 obtenerProductoPorCodigo(request,response);
+                break;
             case "actualizar":
                 actualizarProducto(request, response);
+                break;
+            case "eliminar":
+                eliminarProducto(request, response);
                 break;
                 default:
                     obtenerProductos(request, response);
         }
 
         // Redirigir el flujo de ejecución al método adecuado
+
+    }
+
+    private void eliminarProducto(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+        String codArticulo = request.getParameter("cArticulo");
+
+        try {
+            modeloProductos.eliminarProducto(codArticulo);
+
+            obtenerProductos(request, response);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
