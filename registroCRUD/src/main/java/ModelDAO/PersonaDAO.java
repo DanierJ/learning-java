@@ -58,7 +58,30 @@ public class PersonaDAO implements CRUD<Persona> {
 
     @Override
     public boolean add(Persona persona) {
-        return false;
+       String sql = "SELECT INTO usuarios (nombre, pais) VALUES (?, ?)";
+
+       try {
+           conn = connection.getConnection();
+           ps = conn.prepareStatement(sql);
+
+           ps.setString(1, persona.getNombre());
+           ps.setString(2,persona.getPais());
+
+           int query = ps.executeUpdate();
+
+           return query > 0;
+
+       } catch (SQLException e) {
+           System.out.println("Error connecting to DB: " + e.getMessage());
+       } finally {
+           // This
+           DbUtils.closeQuietly(rs);
+           DbUtils.closeQuietly(ps);
+           DbUtils.closeQuietly(conn);
+       }
+
+       return false;
+
     }
 
     @Override
