@@ -5,6 +5,8 @@ public class Persona {
     private String nombre;
     private String pais;
 
+    public Persona() { }
+
     public Persona(int id, String nombre, String pais) {
         this.id = id;
         this.nombre = nombre;

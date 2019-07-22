@@ -1,14 +1,14 @@
 package Interfaces;
 
-import Model.Persona;
-
 import java.util.List;
 
-public interface CRUD {
+public interface CRUD<T> {
 
-    public List list();
-    public Persona getPersonaById(int id);
-    public boolean add(Persona persona);
-    public boolean edit(Persona persona);
+    // Estas son las acciones que realizarán.
+
+    public List<T> list();
+    public T getById(int id);
+    public boolean add(T object);
+    public boolean edit(T object);
     public boolean delete(int id);
 }
