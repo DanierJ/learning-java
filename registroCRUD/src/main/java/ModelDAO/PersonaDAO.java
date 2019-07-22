@@ -53,6 +53,32 @@ public class PersonaDAO implements CRUD<Persona> {
 
     @Override
     public Persona getById(int id) {
+        String sql = "SELECT * FROM usuarios WHERE id = ?";
+
+        try {
+            conn = connection.getConnection();
+            ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Persona persona = new Persona(rs.getInt("id"), rs.getString("nombre"),rs.getString("pais"));
+
+                return persona;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error performing the query: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+
+            DbUtils.closeQuietly(rs);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(conn);
+        }
+
         return null;
     }
 
@@ -86,6 +112,31 @@ public class PersonaDAO implements CRUD<Persona> {
 
     @Override
     public boolean edit(Persona persona) {
+        String sql = "UPDATE usuarios SET nombre = ?, pais = ? WHERE id = ?";
+
+        try {
+            conn = connection.getConnection();
+            ps = conn.prepareStatement(sql);
+
+            ps.setString(1,persona.getNombre());
+
+            ps.setString(2, persona.getPais());
+
+            ps.setInt(3, persona.getId());
+
+
+            int update = ps.executeUpdate();
+
+            return update > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error performing the query: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeQuietly(rs);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(conn);
+        }
         return false;
     }
 
