@@ -1,3 +1,5 @@
+<%@ page import="Model.Persona" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Danier Javid
@@ -6,7 +8,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 
 <!doctype html>
 <html lang="en">
@@ -29,22 +30,24 @@
              <th>id</th>
              <th>nombre</th>
              <th>pais</th>
-             <th>acciones</th>
+             <th>editar</th>
+             <th>eliminar</th>
          </tr>
          </thead>
          <tbody>
-         <tr>
-             <td scope="row"></td>
-             <td></td>
-             <td></td>
-             <td></td>
-         </tr>
-         <tr>
-             <td scope="row"></td>
-             <td></td>
-             <td></td>
-             <td></td>
-         </tr>
+         <c:forEach var="persona" items="${personas}">
+             <tr>
+                 <td>${persona.id}</td>
+                 <td>${persona.nombre}</td>
+                 <td>${persona.pais}</td>
+                 <td>
+                     <a href="" class="btn btn-info">Editar</a>
+                 </td>
+                 <td>
+                     <a href="" class="btn btn-danger">Eliminar</a>
+                 </td>
+             </tr>
+         </c:forEach>
          </tbody>
      </table>
  </div>
