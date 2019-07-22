@@ -1,6 +1,6 @@
 package Config;
 
-import java.sql.*;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connection {
@@ -16,5 +16,9 @@ public class Connection {
        } catch (ClassNotFoundException e) {
            System.out.println("Connection not found: " + e.getMessage());
        }
+    }
+
+    public java.sql.Connection getConn() {
+        return conn;
     }
 }

@@ -26,7 +26,7 @@
      <!-- Nav tabs -->
      <ul class="nav nav-tabs" id="navId">
          <li class="nav-item">
-             <a href="#tab1Id" class="nav-link active">Listar Persona</a>
+             <a href="Controlador?accion=listar" class="nav-link active">Listar Persona</a>
          </li>
          <li class="nav-item">
              <a href="#tab1Id" class="nav-link active">Agregar</a>
