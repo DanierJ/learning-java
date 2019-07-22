@@ -22,14 +22,14 @@
 <body>
 <div class="container">
     <form action="Controlador" method="POST">
-        <input type="hidden" name="id" value="">
+        <input type="hidden" name="id" value="${persona.id}">
         <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" value="${persona.nombre}">
         </div>
         <div class="form-group">
             <label for="pais">Pais</label>
-            <input type="text" name="pais" id="pais" class="form-control" placeholder="Pais">
+            <input type="text" name="pais" id="pais" class="form-control" placeholder="Pais" value="${persona.pais}">
         </div>
         <input type="submit" class="btn btn-primary"  name="accion" value="edit">
     </form>

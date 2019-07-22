@@ -43,10 +43,7 @@
                  <td>${persona.nombre}</td>
                  <td>${persona.pais}</td>
                  <td>
-                     <form action="Controlador" method="POST">
-                         <input type="hidden" name="id" value="${persona.id}">
-                         <input type="submit" name="accion"  value="edit" class="btn btn-info">
-                     </form>
+                     <a href="Controlador?accion=edit&amp;id=${persona.id}" class="btn btn-info">Editar</a>
                  </td>
                  <td>
                      <form action="Controlador" method="POST">

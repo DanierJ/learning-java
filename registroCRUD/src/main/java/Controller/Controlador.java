@@ -47,6 +47,9 @@ public class Controlador extends HttpServlet {
         } else if (action.equalsIgnoreCase("add")) {
             access = add;
             redirect(request, response, access);
+        } else if (action.equalsIgnoreCase("edit")) {
+            access = edit;
+            edit(request, response, access);
         }
 
     }
@@ -56,7 +59,6 @@ public class Controlador extends HttpServlet {
 
         view.forward(request, response);
     }
-
 
     private void list(HttpServletRequest request, HttpServletResponse response, String access) throws ServletException, IOException {
         List<Persona> personaList = actions.list();
@@ -73,5 +75,16 @@ public class Controlador extends HttpServlet {
         Persona persona = new Persona(nombre, pais);
 
         actions.add(persona);
+    }
+
+    private void edit(HttpServletRequest request, HttpServletResponse response, String access) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        Persona persona = actions.getById(id);
+
+        request.setAttribute("persona", persona);
+
+        redirect(request, response,access);
+
     }
 }
