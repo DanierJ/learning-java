@@ -7,6 +7,11 @@ public class Persona {
 
     public Persona() { }
 
+    public Persona(String nombre, String pais) {
+        this.nombre = nombre;
+        this.pais = pais;
+    }
+
     public Persona(int id, String nombre, String pais) {
         this.id = id;
         this.nombre = nombre;

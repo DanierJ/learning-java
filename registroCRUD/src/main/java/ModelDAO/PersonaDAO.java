@@ -58,14 +58,14 @@ public class PersonaDAO implements CRUD<Persona> {
 
     @Override
     public boolean add(Persona persona) {
-       String sql = "SELECT INTO usuarios (nombre, pais) VALUES (?, ?)";
+       String sql = "INSERT INTO usuarios (nombre, pais) VALUES (?, ?)";
 
        try {
            conn = connection.getConnection();
            ps = conn.prepareStatement(sql);
 
            ps.setString(1, persona.getNombre());
-           ps.setString(2,persona.getPais());
+           ps.setString(2, persona.getPais());
 
            int query = ps.executeUpdate();
 

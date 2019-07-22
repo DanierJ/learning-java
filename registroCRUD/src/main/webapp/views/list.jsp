@@ -24,6 +24,8 @@
 <body>
 
  <div class="container">
+     <h1 class="display-5">Listado personas</h1>
+     <a href="Controlador?accion=add" class="btn btn-primary">Agregar</a>
      <table class="table">
          <thead>
          <tr>

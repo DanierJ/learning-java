@@ -23,8 +23,18 @@ public class Controlador extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String access = "";
+        String action = request.getParameter("accion");
 
+        if (action.equalsIgnoreCase("add")) {
+
+            addPerson(request, response);
+
+            list(request, response, access);
+        }
     }
+
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -33,14 +43,35 @@ public class Controlador extends HttpServlet {
 
         if (action.equalsIgnoreCase("list")) {
             access = list;
+            list(request, response, access);
+        } else if (action.equalsIgnoreCase("add")) {
+            access = add;
+            redirect(request, response, access);
         }
 
-        List<Persona> personaList = actions.list();
-        request.setAttribute("personas", personaList);
+    }
 
+    private void redirect(HttpServletRequest request, HttpServletResponse response, String access) throws ServletException, IOException {
         RequestDispatcher view = request.getRequestDispatcher(access);
 
         view.forward(request, response);
+    }
 
+
+    private void list(HttpServletRequest request, HttpServletResponse response, String access) throws ServletException, IOException {
+        List<Persona> personaList = actions.list();
+        request.setAttribute("personas", personaList);
+
+        redirect(request, response, access);
+
+    }
+
+    private void addPerson(HttpServletRequest request, HttpServletResponse response) {
+        String nombre = request.getParameter("nombre");
+        String pais = request.getParameter("pais");
+
+        Persona persona = new Persona(nombre, pais);
+
+        actions.add(persona);
     }
 }
