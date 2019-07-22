@@ -41,4 +41,13 @@ public class Persona {
     public void setPais(String pais) {
         this.pais = pais;
     }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", pais='" + pais + '\'' +
+                '}';
+    }
 }

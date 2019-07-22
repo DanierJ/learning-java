@@ -142,6 +142,29 @@ public class PersonaDAO implements CRUD<Persona> {
 
     @Override
     public boolean delete(int id) {
+        String sql = "DELETE FROM usuarios WHERE id = ?";
+
+        try {
+            conn = connection.getConnection();
+            ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, id);
+
+            int delete = ps.executeUpdate();
+
+            return delete > 0;
+
+        } catch (SQLException e) {
+
+            System.out.println("Error performing the query: " + e.getMessage());
+            e.printStackTrace();
+
+        } finally {
+            DbUtils.closeQuietly(rs);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(conn);
+        }
+
         return false;
     }
 

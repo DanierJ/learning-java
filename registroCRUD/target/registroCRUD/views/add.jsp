@@ -21,6 +21,7 @@
 </head>
 <body>
 <div class="container">
+    <h1 class="display-4">Agregar personas</h1>
     <form action="Controlador" method="POST">
         <div class="form-group">
             <label for="nombre">Nombre</label>

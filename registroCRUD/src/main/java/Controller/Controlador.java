@@ -1,5 +1,6 @@
 package Controller;
 
+import Interfaces.CRUD;
 import Model.Persona;
 import ModelDAO.PersonaDAO;
 
@@ -19,21 +20,22 @@ public class Controlador extends HttpServlet {
    private String list = "views/list.jsp";
    private String add = "views/add.jsp";
    private String edit = "views/edit.jsp";
-   private PersonaDAO actions = new PersonaDAO();
+   private CRUD<Persona> actions = new PersonaDAO();
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String access = "";
         String action = request.getParameter("accion");
 
         if (action.equalsIgnoreCase("add")) {
-
             addPerson(request, response);
-
-            list(request, response, access);
+        } else if (action.equalsIgnoreCase("edit")) {
+            editPerson(request, response);
+        } else if (action.equalsIgnoreCase("delete")) {
+            deletePerson(request,response);
         }
-    }
 
+        list(request, response, list);
+    }
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,6 +57,7 @@ public class Controlador extends HttpServlet {
     }
 
     private void redirect(HttpServletRequest request, HttpServletResponse response, String access) throws ServletException, IOException {
+
         RequestDispatcher view = request.getRequestDispatcher(access);
 
         view.forward(request, response);
@@ -78,13 +81,44 @@ public class Controlador extends HttpServlet {
     }
 
     private void edit(HttpServletRequest request, HttpServletResponse response, String access) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
 
-        Persona persona = actions.getById(id);
+        Persona persona = getPersonById(request, response);
 
         request.setAttribute("persona", persona);
 
         redirect(request, response,access);
 
     }
+
+    private Persona getPersonById(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        Persona persona = actions.getById(id);
+
+        return persona;
+    }
+
+    private void editPerson(HttpServletRequest request, HttpServletResponse response) {
+
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        String nombre = request.getParameter("nombre");
+        String pais = request.getParameter("pais");
+
+        Persona persona = new Persona();
+
+        persona.setId(id);
+        persona.setNombre(nombre);
+        persona.setPais(pais);
+
+        actions.edit(persona);
+    }
+
+    private void deletePerson(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        actions.delete(id);
+    }
+
+
 }

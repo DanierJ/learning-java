@@ -21,6 +21,7 @@
 </head>
 <body>
 <div class="container">
+    <h1 class="display-4">Editar personas</h1>
     <form action="Controlador" method="POST">
         <input type="hidden" name="id" value="${persona.id}">
         <div class="form-group">
