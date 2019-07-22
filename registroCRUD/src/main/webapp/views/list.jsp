@@ -43,10 +43,13 @@
                  <td>${persona.nombre}</td>
                  <td>${persona.pais}</td>
                  <td>
-                     <a href="" class="btn btn-info">Editar</a>
+                     <a href="Controlador?accion=edit&amp;id=${persona.id}" class="btn btn-info">Editar</a>
                  </td>
                  <td>
-                     <a href="" class="btn btn-danger">Eliminar</a>
+                     <form action="Controlador" method="POST">
+                         <input type="hidden" name="id" value="${persona.id}">
+                         <input type="submit" name="accion"  value="delete" class="btn btn-danger">
+                     </form>
                  </td>
              </tr>
          </c:forEach>
