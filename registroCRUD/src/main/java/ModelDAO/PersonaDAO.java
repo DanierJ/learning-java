@@ -47,7 +47,7 @@ public class PersonaDAO implements CRUD<Persona> {
             DbUtils.closeQuietly(ps);
             DbUtils.closeQuietly(conn);
         }
-        
+
         return personaList;
     }
 
